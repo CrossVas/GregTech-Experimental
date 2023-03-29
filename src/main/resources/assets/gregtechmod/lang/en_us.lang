@@ -1726,5 +1726,5 @@ gregtechmod.item.ingot_stainless_steel.name=Stainless Steel Ingot
 gregtechmod.item.plate_stainless_steel.name=Stainless Steel Plate
 gregtechmod.item.dust_stainless_steel.name=Stainless Steel Dust
 gregtechmod.item.dust_kanthal.name=Kanthal Dust
-gregtechmod.item.dust_netherquartz.name=Nether Quartz Dust
-gregtechmod.item.smalldust_netherquartz.name=Tiny Pile of Nether Quartz Dust
+gregtechmod.item.dust_quartz.name=Nether Quartz Dust
+gregtechmod.item.smalldust_quartz.name=Tiny Pile of Nether Quartz Dust

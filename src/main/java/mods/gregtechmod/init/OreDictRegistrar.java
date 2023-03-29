@@ -35,7 +35,7 @@ public class OreDictRegistrar {
         registerOres("stick", BlockItems.Rod.values(), true);
         registerOres("dust", BlockItems.Dust.values());
         registerOres("dustSmall", BlockItems.Smalldust.values());
-        registerOre("craftingQuartz", BlockItems.Dust.QUARTZ.getItemStack());
+        registerOre("dustNetherQuartz", BlockItems.Dust.QUARTZ.getItemStack());
         registerOresWildcard("craftingToolFile", BlockItems.File.values());
         registerOresWildcard("craftingToolHardHammer", BlockItems.Hammer.values());
         registerOresWildcard("craftingToolSaw", BlockItems.Saw.values());
