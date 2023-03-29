@@ -7,7 +7,7 @@ pluginManagement {
         }
         maven {
             name = "Garden of Fancy"
-            url = uri("https://maven.gofancy.wtf/releases")
+            url = uri("https://gitlab.com/api/v4/projects/26758973/packages/maven")
         }
     }
 }
