@@ -489,12 +489,7 @@ public class ModHandler {
 
     public static boolean addIC2Recipe(BasicMachineRecipeManager manager, IRecipeInput input, NBTTagCompound metadata, boolean overwrite, ItemStack... outputs) {
         if (overwrite) input.getInputs().forEach(stack -> removeIC2Recipe(stack, manager));
-        try {
-            return manager.addRecipe(input, metadata, false, outputs);
-        } catch (Exception e) {
-            // Fail silently if ic2 error for any reason
-            return false;
-        }
+        return manager.addRecipe(input, metadata, false, outputs);
     }
 
     public static void removeSmeltingRecipe(ItemStack input) {

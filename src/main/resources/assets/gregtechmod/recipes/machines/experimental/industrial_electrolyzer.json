@@ -10,8 +10,8 @@
   {
     "E":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#electrolyzer"
+      "item": "ic2:te",
+      "data": 76
     },
     "M":
     {
@@ -25,8 +25,8 @@
     },
     "R":
     {
-      "type": "gregtechmod:ore_dict",
-      "ores": [ "plateIron", "plateAluminium" ]
+      "type": "forge:ore_dict",
+      "ore": "plateSteel"
     },
     "C":
     {

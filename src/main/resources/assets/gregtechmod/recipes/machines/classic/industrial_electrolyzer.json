@@ -10,8 +10,8 @@
   {
     "E":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#electrolyzer"
+      "item": "ic2:te",
+      "data": 76
     },
     "M":
     {

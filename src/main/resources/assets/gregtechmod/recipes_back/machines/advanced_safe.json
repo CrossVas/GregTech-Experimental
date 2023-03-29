@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "C",
+    "S",
+    "B"
+  ],
+  "key":
+  {
+    "C":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier04"
+    },
+    "S":
+    {
+      "type": "gregtechmod:multi",
+      "item": "ic2:te#personal_chest" 
+    },
+    "B":
+    {
+      "type": "gregtechmod:multi",
+      "item": "gregtechmod:teblock#gregtechmod_electric_buffer_small"
+    }
+  },
+  "result":
+  {
+    "item": "gregtechmod:teblock",
+    "data": 53
+  }
+}

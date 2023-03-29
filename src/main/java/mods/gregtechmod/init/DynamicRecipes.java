@@ -41,12 +41,13 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 class DynamicRecipes {
+
     static final IGtRecipeManager<IRecipeIngredient, ItemStack, IRecipePulverizer> PULVERIZER = new RecipeManagerPulverizer();
     static final IGtRecipeManagerBasic<List<IRecipeIngredient>, List<ItemStack>, IRecipeUniversal<List<IRecipeIngredient>>> ALLOY_SMELTER = new RecipeManagerAlloySmelter();
     static final IGtRecipeManagerBasic<List<IRecipeIngredient>, List<ItemStack>, IMachineRecipe<List<IRecipeIngredient>, List<ItemStack>>> CANNER = new RecipeManagerMultiInput<>();
     static final IGtRecipeManagerBasic<IRecipeIngredient, ItemStack, IMachineRecipe<IRecipeIngredient, List<ItemStack>>> LATHE = new RecipeManagerBasic<>();
     static final IGtRecipeManagerBasic<List<IRecipeIngredient>, List<ItemStack>, IMachineRecipe<List<IRecipeIngredient>, List<ItemStack>>> ASSEMBLER = new RecipeManagerMultiInput<>();
-    static final IGtRecipeManagerBasic<IRecipeIngredient, ItemStack, IMachineRecipe<IRecipeIngredient, List<ItemStack>>> BENDER = new RecipeManagerBasic<>();
+    static final IGtRecipeManagerBasic<List<IRecipeIngredient>, List<ItemStack>, IMachineRecipe<List<IRecipeIngredient>, List<ItemStack>>> BENDER = new RecipeManagerMultiInput<>();
     static final IGtRecipeManagerSecondaryFluid<IRecipeUniversal<List<IRecipeIngredient>>> SAWMILL = new RecipeManagerSawmill();
     static final IGtRecipeManagerCellular INDUSTRIAL_CENTRIFUGE = new RecipeManagerCellular();
     static final GtBasicMachineRecipeManager COMPRESSOR = new GtBasicMachineRecipeManager();
@@ -90,7 +91,7 @@ class DynamicRecipes {
         ASSEMBLER.addRecipe(recipe);
     }
 
-    static void addBenderRecipe(IMachineRecipe<IRecipeIngredient, List<ItemStack>> recipe) {
+    static void addBenderRecipe(IMachineRecipe<List<IRecipeIngredient>, List<ItemStack>> recipe) {
         BENDER.addRecipe(recipe);
     }
 

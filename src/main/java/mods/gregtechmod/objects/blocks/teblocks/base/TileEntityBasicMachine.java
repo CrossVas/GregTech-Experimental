@@ -22,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.items.ItemHandlerHelper;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -80,7 +81,7 @@ public abstract class TileEntityBasicMachine<R extends IMachineRecipe<RI, List<I
 
     @Override
     protected Collection<EnumFacing> getSinkSides() {
-        return GtUtil.allSidesWithout(getFacing(), this.outputSide);
+        return GtUtil.allSidesWithout(Arrays.asList(getFacing(), this.outputSide));
     }
 
     @Override

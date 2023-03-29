@@ -436,7 +436,7 @@ public final class OreDictHandler {
         String plateName = name.replaceFirst("ingot", "plate");
         ItemStack plate = OreDictUnificator.get(plateName);
         if (!plate.isEmpty()) {
-            DynamicRecipes.addBenderRecipe(RecipeSimple.create(RecipeIngredientOre.create(name), plate, 50, 20));
+            DynamicRecipes.addBenderRecipe(RecipeDualInput.create(Arrays.asList(RecipeIngredientOre.create(name)), plate, 50, 20));
 
             if (GregTechAPI.getDynamicConfig("plates_needed_for_armor_made_of", material, true)) {
                 ModHandler.removeCraftingRecipeFromInputs(stack, stack, stack, stack, ItemStack.EMPTY, stack)

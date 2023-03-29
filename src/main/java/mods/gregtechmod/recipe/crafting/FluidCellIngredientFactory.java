@@ -22,7 +22,7 @@ public class FluidCellIngredientFactory implements IIngredientFactory {
 
         return new ModNBTIngredient(fluidCell);
     }
-    
+
     public static class ModNBTIngredient extends IngredientNBT {
         public ModNBTIngredient(ItemStack stack) {
             super(stack);

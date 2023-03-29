@@ -25,7 +25,7 @@
     "D":
     {
       "type": "forge:ore_dict",
-      "ore": "itemGrinder"
+      "ore": "craftingGrinder"
     }
   },
   "result":

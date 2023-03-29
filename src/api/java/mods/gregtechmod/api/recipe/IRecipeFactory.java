@@ -50,7 +50,7 @@ public interface IRecipeFactory {
 
     IMachineRecipe<IRecipeIngredient, List<ItemStack>> makeWiremillRecipe(IRecipeIngredient input, ItemStack output, int duration, double energyCost);
 
-    IMachineRecipe<IRecipeIngredient, List<ItemStack>> makeBenderRecipe(IRecipeIngredient input, ItemStack output, int duration, double energyCost);
+    IMachineRecipe<List<IRecipeIngredient>, List<ItemStack>> makeBenderRecipe(List<IRecipeIngredient> inputs, ItemStack output, int duration, double energyCost);
 
     IMachineRecipe<IRecipeIngredient, List<ItemStack>> makeLatheRecipe(IRecipeIngredient input, List<ItemStack> output, int duration);
 

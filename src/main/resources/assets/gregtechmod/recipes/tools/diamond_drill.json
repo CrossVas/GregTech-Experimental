@@ -15,8 +15,8 @@
     },
     "D":
     {
-      "type": "forge:ore_dict",
-      "ore": "gemDiamond"
+      "item": "ic2:crafting",
+      "data": 19
     },
     "T":
     {

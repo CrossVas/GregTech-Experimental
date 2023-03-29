@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "SCS",
+    "CHC",
+    "SCS"
+  ],
+  "key":
+  {
+    "C":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier07"
+    },
+    "H":
+    {
+      "type": "gregtechmod:multi",
+      "item": "gregtechmod:teblock#gregtechmod_supercondensator"
+    },
+    "S":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingSuperconductor"
+    }
+  },
+  "result":
+  {
+    "item": "gregtechmod:teblock",
+    "data": 83
+  }
+}

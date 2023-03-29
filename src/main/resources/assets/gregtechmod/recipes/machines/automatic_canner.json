@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#canner"
+      "item": "ic2:te",
+      "data": 42
     },
     {
       "type": "forge:ore_dict",

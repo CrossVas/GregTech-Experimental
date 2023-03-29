@@ -35,7 +35,7 @@ public class JEIUtils {
     public static List<List<ItemStack>> getMultiInputs(IMachineRecipe<List<IRecipeIngredient>, ?> recipe) {
         return StreamEx.of(recipe.getInput())
             .map(input -> {
-                int count = input.getCount();
+                int count = input.getCount() == 0 ? 1 : input.getCount();
                 return input.stream()
                     .map(stack -> ItemHandlerHelper.copyStackWithSize(stack, count))
                     .toList();

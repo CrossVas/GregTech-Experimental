@@ -15,6 +15,13 @@
   duration: 100
   energyCost: 2
 - input:
+    ore: ingotTin
+  output:
+    item: ic2:cable#type:tin,insulation:0
+    count: 4
+  duration: 150
+  energyCost: 1
+- input:
     ore: ingotSolderingAlloy
   output:
     item: gregtechmod:soldering_tin

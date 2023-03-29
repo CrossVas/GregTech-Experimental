@@ -83,8 +83,8 @@ public class RecipeFactory implements IRecipeFactory {
     }
 
     @Override
-    public IMachineRecipe<IRecipeIngredient, List<ItemStack>> makeBenderRecipe(IRecipeIngredient input, ItemStack output, int duration, double energyCost) {
-        return RecipeSimple.create(input, output, duration, energyCost);
+    public IMachineRecipe<List<IRecipeIngredient>, List<ItemStack>> makeBenderRecipe(List<IRecipeIngredient> inputs, ItemStack output, int duration, double energyCost) {
+        return RecipeDualInput.create(inputs, output, duration, energyCost);
     }
 
     @Override

@@ -1,0 +1,51 @@
+{
+  "type": "gregtechmod:replace_shaped",
+  "pattern":
+  [
+    "CRC",
+    "NPN",
+    "CRC"
+  ],
+  "key":
+  {
+    "C":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier04"
+    },
+    "R":
+    {
+      "type": "gregtechmod:multi",
+      "item": "ic2:nuclear#re_enriched_uranium"
+    },
+    "P":
+    {
+      "type": "forge:ore_dict",
+      "ore": "ingotPlutonium"
+    },
+    "N":
+    {
+      "item": "ic2:thick_neutron_reflector"
+    }
+  },
+  "result":
+  {
+    "item": "ic2:te",
+    "data": 2
+  },
+  "conditions":
+  [
+    {
+      "type": "gregtechmod:classic"
+    },
+    {
+      "type": "gregtechmod:config",
+      "config":
+      {
+        "category": "harder_recipes",
+        "name": "nuke",
+        "value": true
+      }
+    }
+  ]
+}

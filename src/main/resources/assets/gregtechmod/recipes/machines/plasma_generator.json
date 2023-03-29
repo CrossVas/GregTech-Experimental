@@ -20,13 +20,13 @@
     },
     "G":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#generator"
+      "item": "ic2:te",
+      "data": 3
     },
     "P":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#hv_transformer"
+      "item": "ic2:te",
+      "data": 79
     }
   },
   "result":

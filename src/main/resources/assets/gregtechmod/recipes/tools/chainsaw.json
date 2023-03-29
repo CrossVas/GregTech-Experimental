@@ -21,7 +21,7 @@
     "S":
     {
       "type": "forge:ore_dict",
-      "ore": "plateSteel"
+      "ore": "plateStainlessSteel"
     }
   },
   "result":

@@ -963,3 +963,7 @@
     - item: minecraft:string
   chance: 50
   overwrite: true
+- input:
+    item: minecraft:quartz
+  output:
+    - item: gregtechmod:dust_quartz

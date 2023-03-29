@@ -55,6 +55,12 @@
   duration: 2000
   heat: 3000
 - input:
+    - ore: dustKanthal
+  output:
+    - item: gregtechmod:ingot_hot_kanthal
+  duration: 2500
+  heat: 2500
+- input:
     - cell: silicon
       count: 2
   output:
@@ -63,3 +69,9 @@
       count: 2
   duration: 1000
   heat: 1500
+- input:
+    - ore: dustStainlessSteel
+  output:
+    - item: gregtechmod:ingot_stainless_steel
+  duration: 1700
+  heat: 1700
