@@ -324,8 +324,8 @@ fun RepositoryHandler.exclusiveRepo(location: String, vararg groups: String) {
     exclusiveRepo(location) {
         for (group in groups) {
             includeGroup(group)
-        }
-    } 1
+        }remove
+    }
 }
 fun RepositoryHandler.exclusiveRepo(location: String, config: Action<InclusiveRepositoryContentDescriptor>) {
     exclusiveContent {
