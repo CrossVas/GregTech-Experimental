@@ -325,5 +325,11 @@ fun RepositoryHandler.exclusiveRepo(location: String, vararg groups: String) {
         for (group in groups) {
             includeGroup(group)
         }
+    } 1
+}
+fun RepositoryHandler.exclusiveRepo(location: String, config: Action<InclusiveRepositoryContentDescriptor>) {
+    exclusiveContent {
+        forRepositories(maven { url = uri(location) }, fg.repository)
+        filter(config)
     }
 }
