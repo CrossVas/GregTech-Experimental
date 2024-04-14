@@ -208,9 +208,6 @@ dependencies {
     minecraft(group = "net.minecraftforge", name = "forge", version = "1.12.2-14.23.5.2860")
 
     implementation(api.output)
-//    implementation(fg.deobf(group = "net.industrial-craft", name = "industrialcraft-2", version = versionIC2))
-//    apiDep(group = "net.industrial-craft", name = "industrialcraft-2", version = versionIC2, classifier = "api")
-//    implementation(fg.deobf(group = "net.industrial-craft", name = "industrialcraft-2", version = versionIC2))
     implementation(fg.deobf(curse(mod = "industrial-craft", projectId = 242638, fileId = 3838713)))
     compileOnly(fg.deobf(group = "cofh", name = "RedstoneFlux", version = versionRF, classifier = "universal"))
     compileOnly(fg.deobf(group = "cofh", name = "CoFHCore", version = versionCoFHCore, classifier = "universal")) {
