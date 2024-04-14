@@ -28,13 +28,10 @@
       count: 3
     - ore: ingotTin
   output:
-    ore: ingotBronze
-    count: 2
+    item: ic2:ingot#bronze
+    count: 4
   duration: 100
   energyCost: 16
-  conditions:
-    - type: ore_exists
-      ore: ingotBronze
 - input:
     - ore: ingotCopper
       count: 3
