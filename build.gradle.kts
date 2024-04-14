@@ -209,7 +209,6 @@ dependencies {
     
     implementation(api.output)
     implementation(fg.deobf(curse(mod = "industrial-craft", projectId = 242638, fileId = 3838713)))
-    
     compileOnly(fg.deobf(group = "cofh", name = "RedstoneFlux", version = versionRF, classifier = "universal"))
     compileOnly(fg.deobf(group = "cofh", name = "CoFHCore", version = versionCoFHCore, classifier = "universal")) {
         exclude(group = "mezz.jei")
