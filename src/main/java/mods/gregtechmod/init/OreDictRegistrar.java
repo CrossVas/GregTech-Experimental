@@ -17,6 +17,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Arrays;
+
 public class OreDictRegistrar {
 
     public static void registerItems() {
@@ -33,6 +35,7 @@ public class OreDictRegistrar {
         registerOres("stick", BlockItems.Rod.values(), true);
         registerOres("dust", BlockItems.Dust.values());
         registerOres("dustSmall", BlockItems.Smalldust.values());
+        registerOre("dustNetherQuartz", BlockItems.Dust.QUARTZ.getItemStack());
         registerOresWildcard("craftingToolFile", BlockItems.File.values());
         registerOresWildcard("craftingToolHardHammer", BlockItems.Hammer.values());
         registerOresWildcard("craftingToolSaw", BlockItems.Saw.values());
@@ -303,8 +306,8 @@ public class OreDictRegistrar {
         registerOre("glassReinforced", IC2Items.getItem("glass", "reinforced"));
         registerOre("gemDiamond", IC2Items.getItem("crafting", "industrial_diamond"));
         registerOre("itemDiamond", IC2Items.getItem("crafting", "industrial_diamond"));
+        registerOre("craftingUUMatter", IC2Items.getItem("misc_resource", "matter"));
         if (GregTechMod.classic) {
-            registerOre("craftingUUMatter", IC2Items.getItem("misc_resource", "matter"));
             registerOreWildcard("craftingLappack", ModHandler.ic2ItemApi.getItem("lappack"));
         }
         else {

@@ -20,8 +20,8 @@
     },
     "R":
     {
-      "type": "forge:ore_dict",
-      "ore": "plateIron"
+      "type": "gregtechmod:ore_dict",
+      "ores": ["plateIron", "plateSteel"]
     },
     "D":
     {

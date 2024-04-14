@@ -19,13 +19,13 @@
     },
     "L":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#lv_transformer"
+      "item": "ic2:te",
+      "data": 77
     },
     "M":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#mv_transformer"
+      "item": "ic2:te",
+      "data": 78
     }
   },
   "result":

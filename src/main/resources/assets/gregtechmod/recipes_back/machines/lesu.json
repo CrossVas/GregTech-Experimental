@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " L ",
+    "ACA",
+    " M "
+  ],
+  "key":
+  {
+    "A":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier04"
+    },
+    "C":
+    {
+      "item": "gregtechmod:block_lesublock"
+    },
+    "L":
+    {
+      "type": "gregtechmod:multi",
+      "item": "ic2:te#lv_transformer"
+    },
+    "M":
+    {
+      "type": "gregtechmod:multi",
+      "item": "ic2:te#mv_transformer"
+    }
+  },
+  "result":
+  {
+    "item": "gregtechmod:teblock",
+    "data": 47
+  }
+}

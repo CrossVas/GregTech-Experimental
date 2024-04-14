@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "ic2:solar_helmet"
+    },
+    {
+      "type": "gregtechmod:multi",
+      "item": "ic2:te#luminator_flat"
+    }
+  ],
+  "result":
+  {
+    "item": "gregtechmod:light_helmet"
+  }
+}

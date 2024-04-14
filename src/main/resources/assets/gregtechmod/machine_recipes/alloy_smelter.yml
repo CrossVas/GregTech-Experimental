@@ -44,16 +44,12 @@
 - input:
     - ore: ingotCopper
     - ores:
-        - ingotCopper
         - ingotNickel
   output:
     ore: ingotCupronickel
     count: 2
   duration: 100
   energyCost: 16
-  conditions:
-    - type: ore_exists
-      ore: ingotCupronickel
 - input:
     - ore: ingotTin
       count: 9

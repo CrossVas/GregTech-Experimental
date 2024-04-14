@@ -1,4 +1,14 @@
 # Assembler recipes
+#
+# TODO Add these recipes then their output TE is implemented
+#- input:
+#    - ore: craftingRawMachineTier01
+#    - ore: craftingMachineParts
+#  output:
+#    item: gregtechmod:machine_box
+#  duration: 1600
+#  energyCost: 2
+#
 ---
 - input:
     - ore: plateAlloyAdvanced
@@ -102,21 +112,17 @@
       count: 3
   output:
     item: ic2:te#itnt
+    count: 5
   duration: 800
   energyCost: 2
 - input:
-    - ore: ingotTin
+    - ore: plateTin
       count: 2
+    - item: gregtechmod:integrated_circuit
+      count: 0
   output:
     cell: empty
   duration: 400
-  energyCost: 1
-- input:
-    - ore: ingotTin
-  output:
-    item: ic2:cable#type:tin,insulation:0
-    count: 4
-  duration: 150
   energyCost: 1
 - input:
     - ore: gearIron
@@ -246,6 +252,8 @@
 - input:
     - ore: plateIron
       count: 3
+    - item: gregtechmod:integrated_circuit
+      count: 0
   output:
     item: minecraft:bucket
   duration: 400
@@ -279,7 +287,7 @@
 - input:
     - ore: plateSteel
       count: 2
-    - item: gregtechmod:teblock#gregtechmod_gas_turbine
+    - item: gregtechmod:teblock#gas_turbine
   output:
     item: gregtechmod:steam_upgrade
   duration: 1600
@@ -457,6 +465,8 @@
 - input:
     - ore: stickIron
       count: 3
+    - item: gregtechmod:integrated_circuit
+      count: 0
   output:
     item: minecraft:iron_bars
     count: 4
@@ -469,6 +479,15 @@
         - rubber
   output:
     item: ic2:cable#type:copper,insulation:1
+  duration: 100
+  energyCost: 2
+- input:
+    - item: ic2:cable#type:tin,insulation:0
+    - ores:
+        - itemRubber
+        - rubber
+  output:
+    item: ic2:cable#type:tin,insulation:1
   duration: 100
   energyCost: 2
 - input:
@@ -600,7 +619,7 @@
   duration: 12800
   energyCost: 16
 - input:
-    - item: gregtechmod:teblock#gregtechmod_sonictron
+    - item: gregtechmod:teblock#sonictron
     - item: gregtechmod:data_storage_circuit
       count: 4
   output:
@@ -716,6 +735,9 @@
     item: gregtechmod:item_valve
   duration: 3200
   energyCost: 4
+  conditions:
+    - type: mod_loaded
+      modid: railcraft
 - input:
     - item: ic2:crafting#carbon_fibre
       count: 2
@@ -767,7 +789,7 @@
     - item: minecraft:noteblock
       count: 4
   output:
-    item: gregtechmod:teblock#gregtechmod_redstone_note_block
+    item: gregtechmod:teblock#redstone_note_block
   duration: 800
   energyCost: 1
 - input:
@@ -775,13 +797,15 @@
     - item: minecraft:stone_button
       count: 16
   output:
-    item: gregtechmod:teblock#gregtechmod_button_panel
+    item: gregtechmod:teblock#button_panel
   duration: 800
   energyCost: 1
 - input:
-    - ore: craftingRawMachineTier01
-    - ore: craftingMachineParts
+    - item: minecraft:string
+      count: 4
+    - item: minecraft:slime_ball
   output:
-    item: gregtechmod:teblock#gregtechmod_machine_box
-  duration: 1600
+    item: minecraft:lead
+    count: 2
+  duration: 200
   energyCost: 2

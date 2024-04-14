@@ -51,7 +51,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
     public double energyConsume;
     @NBTPersistent
     private Either<ItemStack, FluidStack> pendingRecipe;
-
+    
     private int startupCheck;
 
     public TileEntityFusionComputer() {
@@ -144,7 +144,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
     protected FusionReactorStructure createStructureInstance(EnumFacing facing, Map<Character, Collection<BlockPos>> elements) {
         return new FusionReactorStructure((FusionEnergy) this.energy, this.world, elements);
     }
-
+    
     private void onInvalidate(FusionReactorStructure instance) {
         setActive(false, instance);
         // Extra check in case we have an ExplodingEnergySource
@@ -194,9 +194,9 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
             stop();
             return;
         }
-
+        
         if (this.startupCheck > 0) this.startupCheck--;
-
+        
         FusionReactorStructure instance = struct.get().getInstance();
         if (isProcessing()) {
             if (canUseEnergy(this.energyConsume)) {
@@ -220,22 +220,22 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
             else stop(instance);
         }
     }
-
+    
     public IRecipeFusion getRecipe(FusionReactorStructure instance) {
         List<FluidStack> input = instance.getInput();
         return GtRecipes.fusion.getRecipeFor(input);
     }
-
+    
     public boolean canProcessRecipe(IRecipeFusion recipe) {
         return recipe != null && isAllowedToWork() && (getActive() || canUseEnergy(recipe.getStartEnergy()));
     }
-
+    
     public void prepareRecipeForProcessing(FusionReactorStructure instance, IRecipeFusion recipe) {
         this.pendingRecipe = recipe.getOutput();
         this.maxProgress = recipe.getDuration();
         consumeInput(instance, recipe);
     }
-
+    
     public void consumeInput(FusionReactorStructure instance, IRecipeFusion recipe) {
         List<IRecipeIngredientFluid> ingredients = recipe.getInput();
         StreamEx.of(instance.getPrimaryMaterialInjectors(), instance.getSecondaryMaterialInjectors())
@@ -248,14 +248,14 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
                 .forKeyValue((injector, ingredient) -> injector.tank.content.drain(ingredient.getMilliBuckets(), true)));
         if (!getActive()) useEnergy(recipe.getStartEnergy());
     }
-
+    
     public boolean isProcessing() {
         return isAllowedToWork() && (this.maxProgress > 0 || this.pendingRecipe != null);
     }
-
+    
     private void processRecipe(FusionReactorStructure instance) {
         if (!getActive()) setActive(true, instance);
-
+        
         useEnergy(this.energyConsume);
         if (++this.progress >= this.maxProgress) {
             addOutput(this.pendingRecipe);
@@ -266,7 +266,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
             markDirty();
         }
     }
-
+    
     private void addOutput(Either<ItemStack, FluidStack> output) {
         this.structure.getWorldStructure()
             .map(Structure.WorldStructure::getInstance)
@@ -276,12 +276,12 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
                 .findFirst())
             .ifPresent(te -> output.when(te::addOutput, te::addOutput));
     }
-
+    
     private void stop(FusionReactorStructure instance) {
         if (getActive()) setActive(false, instance);
         stop();
     }
-
+    
     private void stop() {
         this.progress = 0;
         this.maxProgress = 0;
@@ -289,7 +289,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
         this.pendingRecipe = null;
         if (getActive()) setActive(false);
     }
-
+    
     public void setActive(boolean active, FusionReactorStructure instance) {
         setActive(active);
         StreamEx.of(instance.energyInjectors, instance.materialExtractors, instance.primaryMaterialInjectors, instance.secondaryMaterialInjectors)
@@ -362,12 +362,12 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
         double seconds = this.maxProgress / 20D;
         return "/" + GtLocale.translateGeneric("time_secs", Math.round(seconds));
     }
-
+    
     @Override
     public boolean isGivingInformation() {
         return this.structure.isValid();
     }
-
+    
     public static class FusionReactorStructure {
         private final List<TileEntityFusionEnergyInjector> energyInjectors;
         private final List<TileEntityFusionMaterialInjector> primaryMaterialInjectors;
@@ -379,14 +379,14 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
             this.primaryMaterialInjectors = getComponentTileEntities(world, elements, 'I', TileEntityFusionMaterialInjector.class);
             this.secondaryMaterialInjectors = getComponentTileEntities(world, elements, 'M', TileEntityFusionMaterialInjector.class);
             this.materialExtractors = getComponentTileEntities(world, elements, 'P', TileEntityFusionMaterialExtractor.class);
-
+            
             energy.setEnergyInjectors(this.energyInjectors);
         }
-
+        
         public List<TileEntityFusionMaterialExtractor> getEnergyExtractors() {
             return this.materialExtractors;
         }
-
+        
         public List<FluidStack> getInput() {
             return StreamEx.of(this.primaryMaterialInjectors, this.secondaryMaterialInjectors)
                 .map(this::getInput)
@@ -420,8 +420,8 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
 
     public class FusionEnergy extends AdjustableEnergy {
         private List<TileEntityFusionEnergyInjector> energyInjectors = Collections.emptyList();
-        private int capacity;
         private double clientEnergy;
+        private int capacity;
 
         public FusionEnergy() {
             super(TileEntityFusionComputer.this);
@@ -434,7 +434,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
 
         @Override
         public double getStoredEnergy() {
-            return TileEntityFusionComputer.this.world.isRemote ? this.clientEnergy
+            return TileEntityFusionComputer.this.world.isRemote ? this.clientEnergy 
                 : this.energyInjectors.stream()
                 .mapToDouble(TileEntityEnergy::getStoredEU)
                 .sum();
@@ -449,7 +449,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
                 }
                 else break;
             }
-
+            
             double discharged = amount - remaining;
             updateAverageEUOutput(discharged);
             return discharged;
@@ -504,7 +504,7 @@ public class TileEntityFusionComputer extends TileEntityUpgradable implements IH
             buf.writeInt(getCapacity());
             buf.writeDouble(getStoredEnergy());
             buf.flip();
-
+            
             setNetworkUpdate(player, buf);
         }
 

@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "gregtechmod:replace_shaped",
   "pattern":
   [
     "B",
@@ -16,7 +16,7 @@
     "M":
     {
       "type": "forge:ore_dict",
-      "ore": "craftingRawMachineTier00"
+      "ore": "craftingRawMachineTier02"
     },
     "F":
     {

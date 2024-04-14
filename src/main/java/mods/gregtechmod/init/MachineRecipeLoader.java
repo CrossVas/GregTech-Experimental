@@ -6,6 +6,8 @@ import ic2.api.recipe.ICraftingRecipeManager;
 import ic2.api.recipe.Recipes;
 import ic2.core.block.machine.tileentity.TileEntityAssemblyBench;
 import ic2.core.recipe.AdvRecipe;
+import ic2.core.recipe.OreDictionaryEntries;
+import ic2.core.util.StackUtil;
 import mods.gregtechmod.api.GregTechAPI;
 import mods.gregtechmod.api.util.Reference;
 import mods.gregtechmod.compat.ModHandler;
@@ -13,6 +15,7 @@ import mods.gregtechmod.core.GregTechConfig;
 import mods.gregtechmod.core.GregTechMod;
 import mods.gregtechmod.objects.BlockItems;
 import mods.gregtechmod.util.IItemProvider;
+import mods.gregtechmod.util.OptionalItemStack;
 import mods.gregtechmod.util.OreDictUnificator;
 import mods.gregtechmod.util.ProfileDelegate;
 import net.minecraft.block.Block;
@@ -37,33 +40,75 @@ public class MachineRecipeLoader {
         registerMatterAmplifiers();
         addScrapboxDrops();
         loadRecyclerBlackList();
-
-        if (GregTechMod.classic) registerMatterCraftingRecipes();
+        registerMatterCraftingRecipes();
     }
 
     private static void registerMatterCraftingRecipes() {
-        addMatterRecipe("gemRuby", 2, " UU", "UUU", "UU ");
-        addMatterRecipe("gemSapphire", 2, "UU ", "UUU", " UU");
-        addMatterRecipe("gemGreenSapphire", 2, " UU", "UUU", " UU");
-        addMatterRecipe("gemOlivine", 2, "UU ", "UUU", "UU ");
-        addMatterRecipe("dustZinc", 10, "   ", "U U", " U ");
-        addMatterRecipe("dustNickel", 10, " U ", "U U", "   ");
-        addMatterRecipe("dustSilver", 14, " U ", "UUU", "UUU");
-        addMatterRecipe("dustPlatinum", 1, "  U", "UUU", "UUU");
-        addMatterRecipe("dustTungsten", 6, "U  ", "UUU", "UUU");
-        addMatterRecipe("dustSmallOsmium", 1, "U U", "UUU", "U U");
-        addMatterRecipe("dustTitanium", 2, "UUU", " U ", " U ");
-        addMatterRecipe("dustAluminium", 16, " U ", " U ", "UUU");
-        addMatterRecipe("dustElectrotine", 12, "UUU", " U ", "   ");
-        addMatterRecipe("blazeRod", new ItemStack(Items.BLAZE_ROD, 4), "U U", "UU ", "U U");
-        addMatterRecipe("leather", new ItemStack(Items.LEATHER, 32), "U U", " U ", "UUU");
-        addMatterRecipe("string", new ItemStack(Items.STRING, 32), "U U", "   ", "U  ");
-        addMatterRecipe("obsidian", new ItemStack(Blocks.OBSIDIAN, 12), "U U", "U U", "   ");
-        addMatterRecipe("woodSpruce", new ItemStack(Blocks.LOG, 8, 1), "U  ", "   ", "   ");
-        addMatterRecipe("woodBirch", new ItemStack(Blocks.LOG, 8, 2), "  U", "   ", "   ");
-        addMatterRecipe("woodJungle", new ItemStack(Blocks.LOG, 8, 3), "   ", "U  ", "   ");
-        addMatterRecipe("woodAcacia", new ItemStack(Blocks.LOG2, 8), "   ", "  U", "   ");
-        addMatterRecipe("woodDarkOak", new ItemStack(Blocks.LOG2, 8, 1), "   ", "   ", "U  ");
+        addUUCraftingTableRecipe("gemRuby", 2," UU", "UUU", "UU ");
+        addUUCraftingTableRecipe("gemSapphire", 2, "UU ", "UUU", " UU");
+        addUUCraftingTableRecipe("gemGreenSapphire", 2, " UU", "UUU", " UU");
+        addUUCraftingTableRecipe("gemOlivine", 2, "UU ", "UUU", "UU ");
+        addUUCraftingTableRecipe("dustZinc", 10, "   ", "U U", " U ");
+        addUUCraftingTableRecipe("dustNickel", 10, " U ", "U U", "   ");
+        addUUCraftingTableRecipe("dustSilver", 14, " U ", "UUU", "UUU");
+        addUUCraftingTableRecipe("dustPlatinum", 1, "  U", "UUU", "UUU");
+        addUUCraftingTableRecipe("dustTungsten", 6, "U  ", "UUU", "UUU");
+        addUUCraftingTableRecipe("dustSmallOsmium", 1, "U U", "UUU", "U U");
+        addUUCraftingTableRecipe("dustTitanium", 2, "UUU", " U ", " U ");
+        addUUCraftingTableRecipe("dustAluminium", 16, " U ", " U ", "UUU");
+        addUUCraftingTableRecipe("dustElectrotine", 12, "UUU", " U ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Items.BLAZE_ROD, 4), "U U", "UU ", "U U");
+        addUUCraftingTableRecipe(new ItemStack(Items.LEATHER, 32), "U U", " U ", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Items.STRING, 32), "U U", "   ", "U  ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.OBSIDIAN, 12), "U U", "U U", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.LOG, 8, 1), "U  ", "   ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.LOG, 8, 2), "  U", "   ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.LOG, 8, 3), "   ", "U  ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.LOG2, 8), "   ", "  U", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.LOG2, 8, 1), "   ", "   ", "U  ");
+
+        // Ic2 Vanilla recipes
+        addUUCraftingTableRecipe(new ItemStack(Blocks.LOG, 8), " U ", "   ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.STONE, 16), "   ", " U ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.STONEBRICK, 48, 3), "UU ", "UU ", "U  ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.GRASS, 16), "   ", "U  ", "U  ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.MYCELIUM, 24), "   ", "U U", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.MOSSY_COBBLESTONE, 16), "   ", " U ", "U U");
+        addUUCraftingTableRecipe(new ItemStack(Items.CLAY_BALL, 48), "UU ", "U  ", "UU ");
+        addUUCraftingTableRecipe(new ItemStack(Items.FLINT, 32), " U ", "UU ", "UU ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.GLASS, 32), " U ", "U U", " U ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.WOOL, 12), "U U", "   ", " U ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.SANDSTONE, 16), "   ", "  U", " U ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.CACTUS, 48), " U ", "UUU", "U U");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.SNOW, 16), "U U", "   ", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Items.SNOWBALL, 16), "   ", "   ", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Items.DYE, 32, 3), "UU ", "  U", "UU ");
+        addUUCraftingTableRecipe(new ItemStack(Items.REEDS, 48), "U U", "U U", "U U");
+        addUUCraftingTableRecipe(StackUtil.copyWithSize(IC2Items.getItem("misc_resource", "resin"), 21), "U U", "   ", "U U");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.VINE, 24), "U  ", "U  ", "U  ");
+        addUUCraftingTableRecipe(IC2Items.getItem("misc_resource", "water_sheet"), "   ", " U ", " U ");
+        addUUCraftingTableRecipe(IC2Items.getItem("misc_resource", "lava_sheet"), " U ", " U ", " U ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.OBSIDIAN, 12), "U U", "U U", "   ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.NETHERRACK, 16), "  U", " U ", "U  ");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.GLOWSTONE, 8), " U ", "U U", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Items.GUNPOWDER, 15), "UUU", "U  ", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Items.BONE, 32), "U  ", "UU ", "U  ");
+        addUUCraftingTableRecipe(new ItemStack(Items.FEATHER, 32), " U ", " U ", "U U");
+        addUUCraftingTableRecipe(new ItemStack(Items.DYE, 48), " UU", " UU", " U ");
+        addUUCraftingTableRecipe(new ItemStack(Items.ENDER_PEARL), "UUU", "U U", " U ");
+        addUUCraftingTableRecipe(new ItemStack(Items.COAL, 20), "  U", "U  ", "  U");
+        addUUCraftingTableRecipe(StackUtil.copyWithSize(IC2Items.getItem("resource", "copper_ore"), 5), "  U", "U U", "   ");
+        addUUCraftingTableRecipe(StackUtil.copyWithSize(IC2Items.getItem("resource", "tin_ore"), 5), "   ", "U U", "  U");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.IRON_ORE, 2), "U U", " U ", "U U");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.GOLD_ORE, 2), " U ", "UUU", " U ");
+        addUUCraftingTableRecipe(StackUtil.copyWithSize(IC2Items.getItem("resource", "lead_ore"), 7), "UUU", "UUU", "U  ");
+        addUUCraftingTableRecipe(new ItemStack(Items.DYE, 48, 4), " U ", " U ", " UU");
+        addUUCraftingTableRecipe(new ItemStack(Items.REDSTONE, 24), "   ", " U ", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Items.DIAMOND), "UUU", "UUU", "UUU");
+        addUUCraftingTableRecipe(new ItemStack(Blocks.EMERALD_ORE), "UU ", "U U", " UU");
+        addUUCraftingTableRecipe(new ItemStack(Items.EMERALD, 2), "UUU", "UUU", " U ");
+        addUUCraftingTableRecipe(IC2Items.getItem("misc_resource", "iridium_ore"), "UUU", " U ", "UUU");
+
 
         ItemStack[] input = new ItemStack[] { ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ItemStack.EMPTY, ModHandler.uuMatter, ModHandler.uuMatter, ModHandler.uuMatter };
         ModHandler.removeCraftingRecipeFromInputs(input);
@@ -82,9 +127,7 @@ public class MachineRecipeLoader {
         List<Object> patternWithMatter = new ArrayList<>(pattern);
         patternWithMatter.add('U');
         patternWithMatter.add("craftingUUMatter");
-        if (addMatterRecipe("dustPlutonium", new AdvRecipe(dustPlutonium, patternWithMatter.toArray()))) {
-            addMatterCraftingRecipe("dustPlutonium", dustPlutonium, pattern.toArray());
-        }
+        addUUCraftingTableRecipe(dustPlutonium, pattern.toArray());
     }
 
     private static void registerMatterAmplifiers() {
@@ -237,31 +280,23 @@ public class MachineRecipeLoader {
         addToRecyclerBlacklist(Blocks.SNOW_LAYER);
     }
 
-    private static void addMatterRecipe(String name, int count, Object... pattern) {
-        OreDictUnificator.getFirstOre(name, count)
-            .ifPresent(output -> addMatterRecipe(name, output, pattern));
+    public static void addUUCraftingTableRecipe(String name, int count, Object... pattern) {
+        OptionalItemStack output = OreDictUnificator.getFirstOre(name, count);
+        if (output.isPresent()) {
+            List<Object> args = new ArrayList<>(Arrays.asList(pattern));
+            args.add('U');
+            args.add("craftingUUMatter");
+            args.add(ATTRIBUTES);
+            Recipes.advRecipes.addRecipe(output.get(), args.toArray());
+        }
     }
 
-    private static void addMatterRecipe(String name, ItemStack output, Object... pattern) {
-        if (!output.isEmpty() && addMatterRecipe(name, TileEntityAssemblyBench.UuRecipe.create(output, pattern)))
-            addMatterCraftingRecipe(name, output, pattern);
-    }
-
-    private static boolean addMatterRecipe(String name, IRecipe recipe) {
-        if (!GregTechAPI.getDynamicConfig("uumrecipe", name, true)) return false;
-        return TileEntityAssemblyBench.RECIPES.add(recipe);
-    }
-
-    private static void addMatterCraftingRecipe(String name, ItemStack output, Object... pattern) {
+    private static void addUUCraftingTableRecipe(ItemStack output, Object... pattern) {
         List<Object> args = new ArrayList<>(Arrays.asList(pattern));
         args.add('U');
         args.add("craftingUUMatter");
         args.add(ATTRIBUTES);
-        AdvRecipe recipe = new AdvRecipe(output, args.toArray());
-        recipe.setRegistryName(new ResourceLocation(Reference.MODID, CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, name + "FromMatter")));
-        if (recipe.masksMirrored != null) Arrays.fill(recipe.masksMirrored, -1);
-
-        ForgeRegistries.RECIPES.register(recipe);
+        Recipes.advRecipes.addRecipe(output, args.toArray());
     }
 
     private static void addToRecyclerBlacklist(Block block) {

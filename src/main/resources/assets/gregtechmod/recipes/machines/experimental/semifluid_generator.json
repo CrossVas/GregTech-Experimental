@@ -20,8 +20,8 @@
     },
     "G":
     {
-      "type": "gregtechmod:multi",
-      "item": "ic2:te#generator"
+      "item": "ic2:te",
+      "data": 3
     },
     "P":
     {

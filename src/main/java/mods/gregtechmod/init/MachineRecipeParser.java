@@ -10,6 +10,7 @@ import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.MachineRecipe;
 import ic2.api.recipe.Recipes;
+import ic2.core.init.BlocksItems;
 import ic2.core.recipe.BasicMachineRecipeManager;
 import ic2.core.util.StackUtil;
 import mods.gregtechmod.api.GregTechAPI;
@@ -118,7 +119,7 @@ public final class MachineRecipeParser {
         GtRecipes.alloySmelter = new RecipeManagerAlloySmelter();
         GtRecipes.implosion = new RecipeManagerMultiInput<>();
         GtRecipes.wiremill = new RecipeManagerBasic<>();
-        GtRecipes.bender = new RecipeManagerBasic<>();
+        GtRecipes.bender = new RecipeManagerMultiInput<>();
         GtRecipes.lathe = new RecipeManagerBasic<>();
         GtRecipes.vacuumFreezer = new RecipeManagerBasic<>();
         GtRecipes.chemical = new RecipeManagerMultiInput<>();
@@ -171,7 +172,7 @@ public final class MachineRecipeParser {
         parseAndRegisterRecipes("alloy_smelter", RecipeAlloySmelter.class, GtRecipes.alloySmelter);
         parseAndRegisterRecipes("implosion", RecipeImplosion.class, RecipeFilter.Default.class, GtRecipes.implosion);
         parseAndRegisterRecipes("wiremill", RecipeSimple.class, GtRecipes.wiremill);
-        parseAndRegisterRecipes("bender", RecipeSimple.class, GtRecipes.bender);
+        parseAndRegisterRecipes("bender", RecipeDualInput.class, GtRecipes.bender);
         parseAndRegisterRecipes("lathe", RecipeLathe.class, GtRecipes.lathe);
         parseAndRegisterRecipes("vacuum_freezer", RecipeVacuumFreezer.class, RecipeFilter.Energy.class, GtRecipes.vacuumFreezer);
         parseAndRegisterRecipes("chemical", RecipeChemical.class, RecipeFilter.Energy.class, GtRecipes.chemical);
@@ -265,6 +266,7 @@ public final class MachineRecipeParser {
             DynamicRecipes.addSmeltingRecipe("machineCasing", IC2Items.getItem("resource", "machine"), new ItemStack(Items.IRON_INGOT, 8));
         }
         DynamicRecipes.addSmeltingRecipe("resin", new ItemStack(Items.SLIME_BALL), IC2Items.getItem("misc_resource", "resin"));
+        DynamicRecipes.addSmeltingRecipe("iridium", IC2Items.getItem("misc_resource", "iridium_ore"), new ItemStack(BlockItems.Ingot.IRIDIUM.getInstance()));
 
         ProgressManager.pop(progressBar);
     }

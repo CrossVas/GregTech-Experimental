@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "RSR",
+    "RCR",
+    "RSR"
+  ],
+  "key":
+  {
+    "R":
+    {
+      "type": "gregtechmod:ore_dict",
+      "ores": [ "stickTin", "stickLead" ]
+    },
+    "C":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier02"
+    },
+    "S":
+    {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    }
+  },
+  "result":
+  {
+    "item": "gregtechmod:integrated_circuit"
+  }
+}

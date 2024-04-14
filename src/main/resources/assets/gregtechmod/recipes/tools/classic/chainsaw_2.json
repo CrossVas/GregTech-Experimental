@@ -31,20 +31,26 @@
   "conditions":
   [
     {
-      "type": "gregtechmod:classic"
-    },
-    {
-      "type": "forge:not",
-      "value":
-      {
-        "type": "gregtechmod:config",
-        "config":
+      "type": "forge:and",
+      "values":
+      [
         {
-          "category": "harder_recipes",
-          "name": "electric_steel_tools",
-          "value": true
+          "type": "gregtechmod:classic"
+        },
+        {
+          "type": "forge:not",
+          "value":
+          {
+            "type": "gregtechmod:config",
+            "config":
+            {
+              "category": "harder_recipes",
+              "name": "electric_steel_tools",
+              "value": true
+            }
+          }
         }
-      }
+      ]
     }
   ]
 }

@@ -2,21 +2,28 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "MMM",
-    "MCM",
-    "MMM"
+    "CGC",
+    "CLC",
+    "CMC"
   ],
   "key":
   {
     "C":
     {
-      "type": "forge:ore_dict",
-      "ore": "craftingCircuitTier10"
+      "item": "gregtechmod:energy_flow_circuit"
+    },
+    "G":
+    {
+      "item": "gregtechmod:teblock",
+      "data": 50
+    },
+    "L":
+    {
+      "item": "gregtechmod:lapotronic_energy_orb"
     },
     "M":
     {
-      "type": "forge:ore_dict",
-      "ore": "crafting100kkEUStore"
+      "item": "gregtechmod:block_highly_advanced_machine"
     }
   },
   "result":

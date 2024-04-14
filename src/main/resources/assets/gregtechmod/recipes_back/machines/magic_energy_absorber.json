@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "CSC",
+    "IBI",
+    "CMC"
+  ],
+  "key":
+  {
+    "C":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier07"
+    },
+    "S":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingSuperconductor"
+    },
+    "B":
+    {
+      "item": "minecraft:beacon"
+    },
+    "M":
+    {
+      "type": "gregtechmod:multi",
+      "item": "gregtechmod:teblock#gregtechmod_magic_energy_converter"
+    },
+    "I":
+    {
+      "type": "forge:ore_dict",
+      "ore": "plateAlloyIridium"
+    }
+  },
+  "result":
+  {
+    "item": "gregtechmod:teblock",
+    "data": 34
+  }
+}

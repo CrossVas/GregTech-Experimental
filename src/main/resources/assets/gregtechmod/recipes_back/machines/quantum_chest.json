@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ASA",
+    "BTB",
+    "ADA"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingCircuitTier08"
+    },
+    "S":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingMonitorTier02"
+    },
+    "D":
+    {
+      "type": "gregtechmod:multi",
+      "item": "gregtechmod:teblock#gregtechmod_digital_chest"
+    },
+    "T":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingTeleporter"
+    },
+    "B":
+    {
+      "type": "forge:ore_dict",
+      "ore": "craftingRawMachineTier04"
+    }
+  },
+  "result":
+  {
+    "item": "gregtechmod:teblock",
+    "data": 3
+  }
+}

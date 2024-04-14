@@ -11,7 +11,7 @@ import wtf.gofancy.fancygradle.script.extensions.deobf
 import java.time.LocalDateTime
 
 buildscript {
-    dependencies { 
+    dependencies {
         classpath(group = "fr.brouillard.oss", name = "jgitver", version = "0.14.0")
     }
 }
@@ -99,7 +99,7 @@ fancyGradle {
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(8))
-    
+
     withSourcesJar()
 }
 
@@ -107,13 +107,13 @@ configurations {
     "apiImplementation" {
         extendsFrom(apiDep, configurations.minecraft.get())
     }
-    
+
     apiElements {
         setExtendsFrom(setOf(apiDep, shade))
     }
-    
+
     shadowRuntimeElements {
-        attributes { 
+        attributes {
             attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
         }
     }
@@ -121,19 +121,19 @@ configurations {
 
 val devJar by tasks.registering(ShadowJar::class) {
     dependsOn("classes", "apiClasses")
-            
+
     configurations = listOf(shade)
     manifest.attributes(manifestAttributes)
-    
+
     from(sourceSets.main.get().output)
     from(api.output)
-    
+
     archiveClassifier.set("dev")
 }
 
 val apiJar by tasks.registering(Jar::class) {
     finalizedBy("reobfApiJar")
-    
+
     from(api.allSource, api.output)
     exclude("META-INF/**")
     archiveClassifier.set("api")
@@ -149,7 +149,7 @@ tasks {
         from(api.output)
 
         manifest.attributes(manifestAttributes)
-        
+
         archiveClassifier.set("slim")
     }
 
@@ -164,11 +164,11 @@ tasks {
 
         archiveClassifier.set("")
     }
-    
+
     named<Jar>("sourcesJar") {
         from(api.allSource)
     }
-    
+
     processResources {
         inputs.properties(
             "version" to project.version,
@@ -182,7 +182,7 @@ tasks {
             )
         }
     }
-    
+
     assemble {
         dependsOn(shadowJar, devJar, apiJar)
     }
@@ -206,7 +206,7 @@ repositories {
 
 dependencies {
     minecraft(group = "net.minecraftforge", name = "forge", version = "1.12.2-14.23.5.2860")
-    
+
     implementation(api.output)
     implementation(fg.deobf(curse(mod = "industrial-craft", projectId = 242638, fileId = 3838713)))
     compileOnly(fg.deobf(group = "cofh", name = "RedstoneFlux", version = versionRF, classifier = "universal"))
@@ -216,7 +216,7 @@ dependencies {
     compileOnly(fg.deobf(group = "cofh", name = "CoFHWorld", version = versionCoFHWorld, classifier = "universal"))
     compileOnly(fg.deobf(group = "cofh", name = "ThermalFoundation", version = versionThermalFoundation, classifier = "universal"))
     compileOnly(fg.deobf(group = "codechicken", name = "CodeChickenLib", version = versionCodeChickenLib, classifier = "universal"))
-    compileOnly(fg.deobf(group = "cofh", name = "ThermalExpansion", version = versionThermalExpansion, classifier = "universal")) { 
+    compileOnly(fg.deobf(group = "cofh", name = "ThermalExpansion", version = versionThermalExpansion, classifier = "universal")) {
         exclude(group = "mezz.jei")
     }
     runtimeOnly(fg.deobf(group = "mezz.jei", name = "jei_$versionMc", version = versionJEI))
@@ -253,7 +253,7 @@ curseforge {
             displayName = "GregTech Experimental ${project.version}"
             relations(closureOf<CurseRelation> {
                 requiredDependency("industrial-craft")
-                
+
                 optionalDependency("jei")
                 optionalDependency("thermal-expansion")
                 optionalDependency("buildcraft")
@@ -290,15 +290,15 @@ publishing {
         create<MavenPublication>("mavenJava") {
             groupId = project.group as String
             artifactId = "gregtechmod"
-            version = project.version as String             
-            
+            version = project.version as String
+
             from(components["java"])
-            
+
             artifact(devJar)
             artifact(apiJar)
         }
     }
-    
+
     repositories {
         maven {
             credentials {

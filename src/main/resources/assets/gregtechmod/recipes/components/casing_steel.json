@@ -1,0 +1,26 @@
+{
+  "type": "gregtechmod:replace_shaped",
+  "pattern":
+  [
+    "H P"
+  ],
+  "key":
+  {
+    "P":
+    {
+      "type": "forge:ore_dict",
+      "ore": "plateSteel"
+    },
+    "H":
+    {
+      "type": "gregtechmod:tool",
+      "ore": "craftingToolHardHammer",
+      "damage": 4
+    }
+  },
+  "result":
+  {
+    "item": "ic2:casing",
+    "data": 5
+  }
+}

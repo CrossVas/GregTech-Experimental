@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "type": "gregtechmod:multi",
-      "item": "gregtechmod:teblock#gregtechmod_electric_buffer_large"
+      "item": "gregtechmod:teblock",
+      "data": 59
     }
   ],
   "result":
